@@ -29,7 +29,7 @@ abstract class AbstractFormat {
      */
     public function load($filename, $transformator=null) {
         if(isset($transformator)) $this->transformator = $transformator;
-        $tmpFile = Environment::getTempFile($filename, 'formatcache', '.php');
+        $tmpFile = Environment::getTempFile($filename, 'formatcache', 'php');
 
         $rebuild = false;
 
