@@ -13,6 +13,7 @@ class FormatYml extends AbstractFormat {
      * @see AbstractFormat::loadFormatFile()
      */
     protected function loadFile($filename) {
+        $yamlExtension = dirname(__DIR__) . "/extensions/spyc/Spyc.php";
         if(file_exists($filename)) {
             if(function_exists('yaml_parse_file')) {
                 try {
@@ -20,6 +21,9 @@ class FormatYml extends AbstractFormat {
                 } catch(Exception $exception) {
                     throw new Exception($exception->getMessage()."[{$filename}]");
                 }
+            } else if (file_exists($yamlExtension)) {
+                require_once $yamlExtension;
+                $data = Spyc::YAMLLoad($filename);
             } else {
                 throw new FormatException("Yaml extension is not installed!");
             }
