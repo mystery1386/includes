@@ -111,7 +111,8 @@ class Environment {
     public static function getRootPath() {
         if(!isset(self::$PATHS['_ROOT_PATH'])) {
             //On a loosely configured apache the DOCUMENT_ROOT variable could be misleading.
-            self::$PATHS['_ROOT_PATH'] = dirname(dirname(dirname(dirname(__DIR__)))) . "/";
+            self::$PATHS['_ROOT_PATH'] = dirname(dirname(dirname(__DIR__))) . "/";
+            #self::$PATHS['_ROOT_PATH'] = dirname(dirname(dirname(dirname(__DIR__)))) . "/";
         }
         return self::$PATHS['_ROOT_PATH'];
     }
